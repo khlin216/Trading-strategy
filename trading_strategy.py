@@ -8,7 +8,7 @@ Original file is located at
 """
 
 # Commented out IPython magic to ensure Python compatibility.
-!pip install pyforest
+# !pip install pyforest
 from pyforest import *
 import datetime, pickle, copy
 pd.set_option('display.max_rows', 500)
@@ -18,10 +18,10 @@ import matplotlib.pyplot as plt
 # %matplotlib inline  
 from pandas.plotting import register_matplotlib_converters
 register_matplotlib_converters()
-!pip install quandl
+# !pip install quandl
 import quandl
 plt.style.use('ggplot')
-!pip install yfinance
+# !pip install yfinance
 import yfinance as yf
 
 QUANDL_KEY = 'LSQpgUzwJRoF667ZpzyL'
@@ -43,9 +43,11 @@ df.rename(columns={'Adj. Close':'adj_close'}, inplace=True)
 df['simple_rtn'] = df.adj_close.pct_change()
 df['log_rtn'] = np.log(df.adj_close/df.adj_close.shift(1))
 
-import cufflinks as cf
-from plotly.offline import iplot, init_notebook_mode
-init_notebook_mode()
+#simport cufflinks as cf
+# from plotly.offline import iplot, init_notebook_mode
+# from plotly.offline import init_notebook_mode
+#
+# init_notebook_mode()
 
 fig, ax = plt.subplots(3, 1, figsize=(14, 10), sharex=True)
 df.adj_close.plot(ax=ax[0])
@@ -56,7 +58,7 @@ df.log_rtn.plot(ax=ax[2])
 ax[2].set(xlabel = 'Date', ylabel = 'Log returns (%)')
 plt.show()
 
-pip install chart_studio
+# pip install chart_studio
 
 df['Adj. Close'].plot(title='NYMEX WTI Crude Oil time series', 
                       figsize=(14,5))
@@ -194,7 +196,7 @@ plt.show()
 We used the moving standard deviation (calculated using the rolling method of a pandas DataFrame) as a measure of historical volatility. We used windows of 21 and 252 days, which correspond to one month and one year of trading data.
 """
 
-pip install backtrader
+# pip install backtrader
 
 from datetime import datetime
 import backtrader as bt
@@ -264,7 +266,7 @@ plt.show()
 
 from fbprophet import Prophet
 
-pip install stldecompose
+# pip install stldecompose
 
 from stldecompose import decompose, forecast
 stl = decompose(data['Adj. Close'])
@@ -353,7 +355,7 @@ print('Critical Values:')
 for key, value in adf[4].items():
 	print('\t%s: %.3f' % (key, value))
 
-pip install arch
+# pip install arch
 
 from arch.unitroot import ADF
 adf = ADF(df['Adj. Close'])
